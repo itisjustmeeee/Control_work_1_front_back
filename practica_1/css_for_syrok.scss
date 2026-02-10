@@ -1,6 +1,8 @@
+// переменные sass
 $primary: rgba(18, 35, 192, 0.884);
 $theme: dark;
 
+// Использование миксинов
 @mixin cool_text {
     p {
         color: rgb(19, 236, 189);
@@ -16,6 +18,7 @@ $theme: dark;
     }
 }
 
+// Вызовы миксинов
 @include cool_photo;
 @include cool_text;
 
@@ -24,10 +27,12 @@ $theme: dark;
     width: 500px;
     height: 500px;
 
+    // Использование первой переменной
     @if $theme == dark {
-        background: $primary;
+        background: $primary; // Использование второй переменной
     }
 
+    // Использование вложенности селекторов
     &_item_name {
         font-size: x-large;
         color: #f01b1b;
