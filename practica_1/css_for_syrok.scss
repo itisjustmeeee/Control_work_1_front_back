@@ -1,0 +1,48 @@
+$primary: rgba(18, 35, 192, 0.884);
+$theme: dark;
+
+@mixin cool_text {
+    p {
+        color: rgb(19, 236, 189);
+        text-decoration: underline;
+        text-decoration-style: wavy;
+    }
+}
+
+@mixin cool_photo {
+    img {
+        width: 370px;
+        height: 370px;
+    }
+}
+
+@include cool_photo;
+@include cool_text;
+
+.card {
+    padding: 16px;
+    width: 500px;
+    height: 500px;
+
+    @if $theme == dark {
+        background: $primary;
+    }
+
+    &_item_name {
+        font-size: x-large;
+        color: #f01b1b;
+        text-align: center;
+    }
+
+    &_item_photo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        object-fit: contain;
+        box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.7);
+    }
+
+    &_new_card {
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    }
+}
