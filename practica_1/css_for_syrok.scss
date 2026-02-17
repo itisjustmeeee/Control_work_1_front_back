@@ -3,24 +3,18 @@ $primary: rgba(18, 35, 192, 0.884);
 $theme: dark;
 
 // Использование миксинов
+// p
 @mixin cool_text {
-    p {
-        color: rgb(19, 236, 189);
-        text-decoration: underline;
-        text-decoration-style: wavy;
-    }
+    color: rgb(19, 236, 189);
+    text-decoration: underline;
+    text-decoration-style: wavy;
 }
 
+// img
 @mixin cool_photo {
-    img {
-        width: 370px;
-        height: 370px;
-    }
+    width: 370px;
+    height: 370px;
 }
-
-// Вызовы миксинов
-@include cool_photo;
-@include cool_text;
 
 .card {
     padding: 16px;
@@ -49,5 +43,14 @@ $theme: dark;
 
     &_new_card {
         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+
+        // Вызовы миксинов
+        .p {
+            @include cool_text;
+        }
+
+        .img {
+            @include cool_photo;
+        }
     }
 }
