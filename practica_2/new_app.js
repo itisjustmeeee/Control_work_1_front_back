@@ -4,10 +4,10 @@ const port = 3000;
 
 // Список товаров
 let items = [
-    {id: 101, name: "сырок", cost: 200},
-    {id: 102, name: "доширак", cost: 150},
-    {id: 103, name: "пельмени", cost: 500},
-    {id: 104, name: "сок", cost: 70},
+    {id: 101, name: 'сырок', cost: 200},
+    {id: 102, name: 'доширак', cost: 150},
+    {id: 103, name: 'пельмени', cost: 500},
+    {id: 104, name: 'сок', cost: 70},
 ]
 
 // Использование middleware для парсинга JSON
@@ -33,7 +33,7 @@ app.post('/items', (req, res) => {
 });
 
 // Получение всех товаров
-app.get('/items', (res, req) => {
+app.get('/items', (req, res) => {
     res.send(JSON.stringify(items));
 });
 
