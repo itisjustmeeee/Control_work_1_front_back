@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles/ProductCard.module.scss';
+import ProductForm from './ProductForm';
 
-// получение списка продуктов
-function ProductList({ products, onEdit, onDelete }) {
+function ProductList({
+  products,
+  onEdit,
+  onDelete,
+  editingProduct,
+  onUpdate,
+  onCancelEdit,
+  onAdd
+}) {
   const [searchId, setSearchId] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
   const filteredProducts = searchId.trim()
     ? products.filter(p => String(p.id) === searchId.trim())
     : products;
 
-  // поиск продукта по id
   const handleSearchChange = (e) => {
     const value = e.target.value;
     if (value === '' || /^\d+$/.test(value)) {
@@ -20,6 +28,19 @@ function ProductList({ products, onEdit, onDelete }) {
 // очистка поиска
   const clearSearch = () => {
     setSearchId('');
+  };
+
+  const isFormVisible = showForm || !!editingProduct;
+
+  // Открытие формы добавления
+  const openAddForm = () => {
+    setShowForm(true);
+  };
+
+  // Закрытие формы
+  const closeForm = () => {
+    setShowForm(false);
+    if (editingProduct) onCancelEdit();
   };
 
   return (
@@ -63,6 +84,50 @@ function ProductList({ products, onEdit, onDelete }) {
         <div style={{ marginLeft: 'auto', color: '#666', fontSize: '0.95rem' }}>
           Показано товаров: {filteredProducts.length}
         </div>
+      </div>
+
+      <div style={{ marginBottom: '2rem' }}>
+        {!isFormVisible && (
+          <button
+            onClick={openAddForm}
+            style={{ 
+              padding: '0.7rem 1.4rem',
+              marginTop: '1rem',
+              background: '#007bff',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+            }}
+          >
+            + Добавить товар
+          </button>
+        )}
+
+        {isFormVisible && (
+          <>
+            <button
+              onClick={closeForm}
+              style={{
+                marginTop: '1rem',
+                padding: '0.7rem 1.4rem',
+                background: '#007bff',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer',
+              }}
+            >
+              Скрыть форму
+            </button>
+
+            <ProductForm
+              onSubmit={editingProduct ? onUpdate : onAdd}
+              initialData={editingProduct || null}
+              onCancel={closeForm}
+            />
+          </>
+        )}
       </div>
 
       {filteredProducts.length === 0 && searchId ? (

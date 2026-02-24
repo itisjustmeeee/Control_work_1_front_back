@@ -1,5 +1,3 @@
-@import "../styles/variables";
-
 .backdrop {
   position: fixed;
   inset: 0;
@@ -33,61 +31,51 @@
     transform: translateY(0);
   }
 }
-
 .card {
   border: 1px solid #ddd;
-  border-radius: $border-radius;
+  border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   background: white;
-  box-shadow: $shadow;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  }
-
-  h3 {
-    margin-top: 0;
-    color: $dark;
-  }
-
-  .price {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: $primary;
-  }
-
-  .stock {
-    font-weight: bold;
-  }
-
-  .stockHigh {
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+.card h3 {
+  margin-top: 0;
+  color: #343a40;
+}
+.card .price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #007bff;
+}
+.card .stock {
+  font-weight: bold;
+}
+.card .stockHigh {
   color: green;
   font-weight: 600;
 }
-
-.stockLow {
+.card .stockLow {
   color: darkred;
   font-weight: 600;
 }
-
-  button {
-    margin-right: 0.75rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &.edit {
-      background: $primary;
-      color: white;
-    }
-
-    &.delete {
-      background: $danger;
-      color: white;
-    }
-  }
+.card button {
+  margin-right: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
+.card button.edit {
+  background: #007bff;
+  color: white;
+}
+.card button.delete {
+  background: #dc3545;
+  color: white;
+}/*# sourceMappingURL=ProductCard.module.css.map */
